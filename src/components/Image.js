@@ -7,7 +7,7 @@ const Image = ({ className, img }) => {
   const [hovered, setHovered] = useState(false);
   // console.log(hovered);
   // destrukturyzacja obiektu context
-  const { toggleFavorite, addImageToCart } = useContext(Context);
+  const { toggleFavorite, addImageToCart, cartItems } = useContext(Context);
 
   //   function heartIcon() {
   //     if(img.isFavorite) {
@@ -17,16 +17,31 @@ const Image = ({ className, img }) => {
   //     }
   // }
 
+  // const cartIcon = hovered && (
+  //   <i
+  //     className="ri-add-circle-line cart"
+  //     onClick={() => addImageToCart(img)}
+  //   ></i>
+  // );
+
+  function cartIcon() {
+    const alreadyInCart = cartItems.some((item) => item.id === img.id);
+    if (alreadyInCart) {
+      return <i className="ri-shopping-cart-fill cart"></i>;
+    } else if (hovered) {
+      return (
+        <i
+          className="ri-add-circle-line cart"
+          onClick={() => addImageToCart(img)}
+        ></i>
+      );
+    }
+  }
+
   const heartIcon = hovered && (
     <i
       className="ri-heart-line favorite"
       onClick={() => toggleFavorite(img.id)}
-    ></i>
-  );
-  const cartIcon = hovered && (
-    <i
-      className="ri-add-circle-line cart"
-      onClick={() => addImageToCart(img)}
     ></i>
   );
 
@@ -44,7 +59,7 @@ const Image = ({ className, img }) => {
       {filledHeartIcon}
       {heartIcon}
       {/* {heartIcon()} */}
-      {cartIcon}
+      {cartIcon()}
     </div>
   );
 };
