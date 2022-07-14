@@ -17,7 +17,7 @@ const Header = () => {
   //   }
   // };
 
-  console.log(cartItems);
+  // console.log(cartItems);
 
   return (
     <header>
