@@ -17,7 +17,6 @@ const Cart = () => {
     const sum = cartItems.length * 5.99;
     return sum.toLocaleString("pl-PL", { style: "currency", currency: "PLN" });
   };
-
   const placeOrder = () => {
     setButtonText("Ordering...");
     setTimeout(() => {
@@ -32,9 +31,13 @@ const Cart = () => {
       <h1>Check out</h1>
       {cartItemElements}
       <p className="total-cost">Total: {calculatePrice()} </p>
-      <div className="order-button">
-        <button onClick={placeOrder}>{buttonText}</button>
-      </div>
+      {cartItems.length > 0 ? (
+        <div className="order-button">
+          <button onClick={placeOrder}>{buttonText}</button>
+        </div>
+      ) : (
+        <p>You have no items in your cart.</p>
+      )}
     </main>
   );
 };
