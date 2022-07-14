@@ -23,7 +23,7 @@ const Header = () => {
     <header>
       <div className="container flex">
         <Link to="/">
-          <h1>Pic Some</h1>
+          <h1>Pic Some PIC</h1>
         </Link>
         <Link to="/cart">
           {/* {cartIcon()} */}

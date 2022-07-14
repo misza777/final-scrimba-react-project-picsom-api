@@ -46,6 +46,9 @@ const ContextProvider = ({ children }) => {
     setCartItems((prevItems) => prevItems.filter((item) => item.id !== id));
   };
 
+  const emptyCart = () => {
+    setCartItems([]);
+  };
   // console.log(cartItems);
 
   return (
@@ -56,6 +59,7 @@ const ContextProvider = ({ children }) => {
         addImageToCart,
         removeImgFromCart,
         cartItems,
+        emptyCart,
       }}
     >
       {children}
