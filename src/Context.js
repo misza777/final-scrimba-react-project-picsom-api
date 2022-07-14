@@ -46,7 +46,7 @@ const ContextProvider = ({ children }) => {
     setCartItems((prevItems) => prevItems.filter((item) => item.id !== id));
   };
 
-  console.log(cartItems);
+  // console.log(cartItems);
 
   return (
     <Context.Provider
